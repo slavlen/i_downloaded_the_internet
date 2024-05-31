@@ -33,6 +33,12 @@ def print_help():
     """
     print(help_text)
 
+docker_repos = {
+    'dockerhub': 'docker.io',
+    'mirror': 'mirror.gcr.io',
+    'huecker': 'huecker.io'
+}
+
 def main():
     parser = argparse.ArgumentParser(description='Docker image management script.', add_help=False)
     parser.add_argument('-u', '--username', type=str, help='Username for dockerhub.com or local_repo.')
@@ -68,11 +74,7 @@ def main():
 
     if args.action == 'pull':
         if args.docker_repo and args.username and args.password and images:
-            docker_repo = {
-                'dockerhub': 'docker.io',
-                'mirror': 'mirror.gcr.io',
-                'huecker': 'huecker.io'
-            }[args.docker_repo]
+            docker_repo = docker_repos[args.docker_repo]
             pull_images(images, docker_repo, args.username, args.password)
         else:
             print('Please provide all required arguments (-u, -p, -d, -l/-i) for the pull operation.')
@@ -85,11 +87,7 @@ def main():
 
     elif args.action == 'pull_n_push':
         if args.docker_repo and args.username and args.password and args.local_repo and images:
-            docker_repo = {
-                'dockerhub': 'docker.io',
-                'mirror': 'mirror.gcr.io',
-                'huecker': 'huecker.io'
-            }[args.docker_repo]
+            docker_repo = docker_repos[args.docker_repo]
             pull_n_push(images, docker_repo, args.local_repo, args.username, args.password)
         else:
             print('Please provide all required arguments (-u, -p, -d, -L, -l/-i) for the pull_n_push operation.')
