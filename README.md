@@ -8,35 +8,6 @@ This is a simple script for pulling Docker images from public repositories and p
 - Push images to specified local repositories.
 - Pull images from Docker repositories and then push them to local repositories in one command.
 
-## Usage
-
-1. **Pull Images**
-    ```sh
-    sudo python3 main.py pull -u <username> -p <password> -d <docker-repo> -l <path_to_list_file>
-    ```
-    Example:
-    ```sh
-    sudo python3 main.py pull -u myuser -p mypass -d dockerhub -l ./list.txt
-    ```
-
-2. **Push Images**
-    ```sh
-    sudo python3 main.py push -u <username> -p <password> -L <local-repo> -i <image_name(s)>
-    ```
-    Example:
-    ```sh
-    sudo python3 main.py push -u myuser -p mypass -L mylocalrepo.io -i nginx
-    ```
-
-3. **Pull and Push Images**
-    ```sh
-    sudo python3 main.py pull_n_push -u <username> -p <password> -d <docker-repo> -L <local-repo> -i <image_name(s)>
-    ```
-    Example:
-    ```sh
-    sudo python3 main.py pull_n_push -u myuser -p mypass -d dockerhub -i nginx
-    ```
-
 ## Options
 
 - `-u, --username` : Username for dockerhub.com or local_repo.
